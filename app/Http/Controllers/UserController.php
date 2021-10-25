@@ -17,9 +17,9 @@ class UserController extends Controller
     }
 
     public function personalInfoStore(Request $request) {
-        // dd($request->profile_pic);
+    
         $request->validate([
-            'profile_pic'                 => 'mimes:jpeg,png,jpg',
+            'profile_pic'                 => 'required|mimes:jpeg,png,jpg',
             'firstName'             => 'required|string',
             'lastName'              => 'required|string',
             'middleName'            => 'required|string',
@@ -50,7 +50,7 @@ class UserController extends Controller
         ]);
 
         $user = User::find(auth()->user()->id);
-        $imageName = time().'.'.$request->profile_pic->extension(); 
+        $imageName = time() . $request->lastName.'.'.$request->profile_pic->extension(); 
 
         $user->profile_pic = $imageName;
         $user->save();

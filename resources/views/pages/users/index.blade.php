@@ -28,6 +28,10 @@
                                         {{ __('You are logged in!') }}
                                     </div>
 
+                                    @if (auth()->user()->student()->exists())
+                                        asdasda
+                                            
+                                    @else
                                     <div>
                                         <div class="alert alert-warning d-flex align-items-center" role="alert" id="alertbtn">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
@@ -40,7 +44,9 @@
 
                                         <a href="{{ route('user.personalinfo') }}" class="btn btn-primary">Click here to Fill up</a>
 
-                                    </div>                                
+                                    </div>    
+                                    @endif
+                                                                    
                                 </div>
                             </div>
                         </div>

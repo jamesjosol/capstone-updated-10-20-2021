@@ -17,7 +17,7 @@
     @endif
 <div class="container">
 
-    @include('component.user-sidebar')
+    @include('component.sidebar')
 
     <div class="dashboard-content">
         <div class="text">
@@ -27,7 +27,7 @@
                         <div class="row">
                             <div class="col-md-10 offset-md-1 mt-4">
                                 <h1 class="mb-5">Personal Information</h1>
-                                {!! Form::open(["route" => "user.personalinfo", 'method' => 'post', 'id' => 'personalinfo-form', 'enctype'=>"multipart/form-data"]) !!}
+                                {!! Form::model($student, ["route" => ["admin.students.edit", $student->id], 'method' => 'patch', 'id' => 'personalinfo-form', 'enctype'=>"multipart/form-data"]) !!}
                                 @include('items.user-personal-info-form')
                                 {!! Form::close() !!}
                             </div>

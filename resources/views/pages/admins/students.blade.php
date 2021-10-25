@@ -8,16 +8,15 @@
 	
     @include('component.sidebar')
     @include('component.info_msg')
-    @include('items.create-users')
     <div class="dashboard-content">
         <div class="text">
             <div class="container-fluid">
                 <div class="row p-3">
                     <h1 class="fw-light" id="dashusers"><i class="fad fa-user-graduate"></i> Student list</h1>
                     <div class="mb-3">
-                        <button class="btn btn-outline-primary float-end px-3" data-backdrop="static" data-toggle="modal" data-target="#createUsersModal">
+                        <a class="btn btn-outline-primary float-end px-3" href="{{route('admin.students.create')}}">
                             <i class="fa fa-user-plus" aria-hidden="true"></i> New Student
-                        </button>
+                        </a>
                     </div>
                     <div class="col-md-12 offset-md-0 mb-5 p-5 card-table">
                         <table id="example" class="table table-striped table-hover table-bordered">
@@ -40,9 +39,9 @@
                                     @else
                                     <td class=""><img style="width: 100px; border-radius:5px;" src="{{asset("img/pp.png")}}"></td>
                                     @endif
-                                    <td>{{$student->lastName}}</td>
-                                    <td>{{$student->firstName}} </td>
-                                    <td>{{$student->middleName}}</td>
+                                    <td class="lname">{{$student->lastName}}</td>
+                                    <td class="fname">{{$student->firstName}} </td>
+                                    <td class="mname">{{$student->middleName}}</td>
                                     <td class="text-center">
                                         <a class="btn btn-outline-primary tooltip-actbtn" href="{{route('admin.students.view', ['student' => "$student->id"])}}"><i class="far fa-eye"></i>
                                             <div class="top">
@@ -50,11 +49,11 @@
                                             </div>
                                         </a>
                                         
-                                        <div class="btn btn-outline-success tooltip-actbtn" id="edit-student" data-student-id="{{$student->id}}"><i class="fas fa-pencil-alt"></i>
+                                        <a class="btn btn-outline-success tooltip-actbtn" href="{{route('admin.students.edit', ['student' => "$student->id"])}}"><i class="fas fa-pencil-alt"></i>
                                             <div class="top">
                                                 <p class="tooltiptxt">Edit</p>
                                             </div>
-                                        </div>
+                                        </a>
 
                                         <div class="btn btn-outline-danger tooltip-actbtn"  id="delete-student" data-student-id="{{$student->id}}"><i class="fal fa-user-times"></i>
                                             <div class="top">
@@ -82,8 +81,7 @@
             </div>
         </div>
     </div>
-    @include('items.edit-users')
-    @include('items.delete-users')
+    @include('items.delete-students')
 
     <script>
         let btn = document.querySelector("#btn-menu");

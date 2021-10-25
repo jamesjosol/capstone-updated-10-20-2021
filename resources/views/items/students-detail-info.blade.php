@@ -1,7 +1,8 @@
 <div class="card" id="user-card">
 
     <div class="card-header" id="user-card-header">
-        <a class="btn btn-outline-primary float-end" href="{{route('admin.students')}}"><i class='bx bx-arrow-back'></i>Back</a>
+        <a class="btn btn-outline-primary mb-2" href="{{route('admin.students')}}"><i class='bx bx-arrow-back'></i> Back</a>
+        <a class="btn btn-outline-success mb-2 float-end" href="{{route('admin.students.edit', ['student' => "$student->id"])}}"><i class="fas fa-pencil-alt"></i> Edit</a>
     </div>
     <div class="card-body" id="user-card-body">
 

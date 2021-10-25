@@ -48,7 +48,12 @@ Route::group(['middleware'=>'auth'], function() {
         Route::get('users/view/{user}', [AdminController::class, 'viewUser'])->name('admin.users.view');
 
         Route::get('students', [AdminController::class, 'showStudents'])->name('admin.students');
+        Route::get('students/create', [AdminController::class, 'createStudent'])->name('admin.students.create');
+        Route::post('students/create', [AdminController::class, 'storeStudent'])->name('admin.students.create');
+        Route::get('students/edit/{student}', [AdminController::class, 'editStudent'])->name('admin.students.edit');
+        Route::patch('students/edit/{student}', [AdminController::class, 'updateStudent'])->name('admin.students.edit');
         Route::get('students/view/{student}', [AdminController::class, 'viewStudent'])->name('admin.students.view');
+        Route::delete('students', [AdminController::class, 'deleteStudent'])->name('admin.students');
     });
     
     Route::group(['prefix'=>'user', 'middleware'=>'isUser'], function () {

@@ -51,4 +51,19 @@ class User extends Authenticatable
     public function student() {
         return $this->hasOne('App\Models\Student');
     }
+
+    public function isAdmin() {
+        return auth()->user()->role == 1;
+    }
+
+
+    public static function usersNotStudent() {
+        $users = User::doesntHave('student')->get();
+        $list = [];
+        foreach($users as $u) {
+            $role = $u->role == 1 ? 'Administrator' : 'Normal';
+            $list[$u->id] = $u->lastName . ", " . $u->firstName . "     ($role)";
+        }
+        return $list;
+    }
 }
